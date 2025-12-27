@@ -1,0 +1,67 @@
+defaults:
+  - _self_
+  - dataset      # 加载 dataset.yaml
+  - model: mert_330m
+
+project:
+  name: "music_genre_classification"
+  seed: 42
+
+
+# 训练配置
+training:
+  # 优化器
+  optimizer:
+    type: 'Adam'
+    lr: 1e-4
+    weight_decay: 1e-3
+
+  # 学习率调度器
+  scheduler:
+    type: 'ReduceLROnPlateau'
+    mode: 'max'
+    factor: 0.5
+    patience: 5
+    monitor: 'val_acc'
+
+  # 训练参数
+  max_epochs: 300
+  accelerator: 'gpu'
+  devices: [0]
+  log_every_n_steps: 5
+
+  # 早停
+  early_stopping:
+    monitor: 'val_loss'
+    patience: 15
+    mode: 'min'
+
+  # 模型检查点
+  checkpoint:
+    save_dir: '../checkpoints'
+    monitor: 'val_acc'
+    mode: 'max'
+    save_top_k: 1
+    filename: 'epoch{epoch:02d}-acc{val_acc:.4f}'
+    save_last: true
+
+# 输出配置
+output:
+  tensorboard_dir: '../tensorboard'
+  result_dir: '../results'
+
+# Hydra配置
+hydra:
+  output_subdir: null
+  run:
+    dir: .
+  job_logging:
+      # 1. 核心修改：在 root logger 中只保留 console，移除 file
+      root:
+        handlers: [console]
+      handlers:
+        file:
+          # 2. 保持使用 FileHandler (为了兼容 filename 参数，防止报错)
+          class: logging.FileHandler
+          # 3. Windows 系统下将文件名设为 NUL，这相当于“黑洞”，不会在磁盘生成任何文件
+          filename: NUL

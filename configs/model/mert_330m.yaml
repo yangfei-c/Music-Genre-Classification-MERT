@@ -1,0 +1,17 @@
+# @package _global_
+feature_extraction:
+  model_name: 'm-a-p/MERT-v1-330M'
+  sample_rate: 24000
+  segment_duration: 30
+  use_segmentation: true
+  min_duration: 25
+  device: 'cuda:0'
+
+model:
+  selected_layers: [10, 15, 20] # 330M 使用更深层
+  layer_dim: 1024
+  num_classes: null
+  classifier:
+    hidden_dims: [1024, 512] # 大模型用大一点的分类头
+    dropout: 0.6             # 增加 dropout 防止过拟合
+    use_layer_weighting: false

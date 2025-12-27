@@ -1,0 +1,45 @@
+data:
+  active_datasets:
+    #- gtzan
+     - fma_small
+  gtzan:
+    root_dir: 'D:/AAAA_audio_dataset/genre/gtzan'
+    audio_dir: 'D:/AAAA_audio_dataset/genre/gtzan/audio'
+    feature_dir: 'D:/AAAA_audio_dataset/genre/gtzan'
+    meta_file: 'D:/AAAA_audio_dataset/genre/gtzan/meta.json'
+    split_ratio:
+      train: 0.8
+      val: 0.1
+      test: 0.1
+    classes:
+      - blues
+      - classical
+      - country
+      - disco
+      - hiphop
+      - jazz
+      - metal
+      - pop
+      - reggae
+      - rock
+    batch_size: 32
+    num_workers: 4
+    pin_memory: true
+
+  fma_small:
+    root_dir: 'D:/AAAA_audio_dataset/genre/fma/fma_small'
+    audio_dir: 'D:/AAAA_audio_dataset/genre/fma/fma_small/audio'
+    feature_dir: 'D:/AAAA_audio_dataset/genre/fma/fma_small'
+    meta_file: 'D:/AAAA_audio_dataset/genre/fma/fma_small/meta.json'
+    classes:
+      - Hip-Hop
+      - International
+      - Electronic
+      - Folk
+      - Experimental
+      - Rock
+      - Pop
+      - Instrumental
+    batch_size: 64
+    num_workers: 4
+    pin_memory: true

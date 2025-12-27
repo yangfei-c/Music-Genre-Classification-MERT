@@ -1,0 +1,17 @@
+# @package _global_
+feature_extraction:
+  model_name: 'm-a-p/MERT-v1-95M'
+  sample_rate: 24000
+  segment_duration: 30
+  use_segmentation: true
+  min_duration: 25
+  device: 'cuda:0'
+
+model:
+  selected_layers: [5, 6, 7]
+  layer_dim: 768
+  num_classes: null # 自动检测
+  classifier:
+    hidden_dims: [512, 256] # 小模型用小一点的分类头
+    dropout: 0.5
+    use_layer_weighting: false
