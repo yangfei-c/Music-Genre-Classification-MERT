@@ -5,9 +5,9 @@
 ![Hydra](https://img.shields.io/badge/Config-Hydra-89b8cd)
 ![MERT](https://img.shields.io/badge/Model-MERT-green)
 
-​	这是一个基于 **MERT (**Music und**ER**standing model with large-scale self-supervised **T**raining)预训练特征的音乐流派分类项目。项目利用 MERT 强大的音频理解能力提取特征，并结合 MLP 分类头，在 **GTZAN** 和 **FMA Small** 数据集上实现流派分类。
+​这是一个基于 **MERT (**Music und**ER**standing model with large-scale self-supervised **T**raining)预训练特征的音乐流派分类项目。项目利用 MERT 强大的音频理解能力提取特征，并结合 MLP 分类头，在 **GTZAN** 和 **FMA Small** 数据集上实现流派分类。
 
-> 本人并无代码能力，故大多代码为Gemini所写或是从读过的论文中附带的开源项目中参考。
+> 项目代码参考了 Gemini 生成的代码及相关论文的开源实现。
 
 ## 📂 项目结构 (Directory Structure)
 ```text
